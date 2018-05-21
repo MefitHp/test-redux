@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import * as courseActions from '../../redux/actions/courseActions'
 
 export class ManageCoursePage extends Component {
     render() {
@@ -16,7 +17,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(courseActions, dispatch)
     }
 }
 

@@ -2,20 +2,30 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as courseActions from '../../redux/actions/courseActions'
+import CourseForm from './CourseForm'
 
 class ManageCoursePage extends Component {
+    state = {
+        course: Object.assign({}, this.props.initialCourse),
+        errors: {}
+    }
     render() {
         return (
             <div>
-                <h1>Administrador de cursos: </h1>
+                <CourseForm
+                    allAuthors={[]}
+                    course={this.state.course}
+                    errors={this.state.errors}
+                />
             </div>
         )
     }
 }
 
 function mapStateToProps(state, OwnProps) {
+    const course = { id: '', watchHref: '', title: '', authorId: '', length: '', category: '' };
     return {
-        state: state
+        initialCourse: course
     }
 }
 

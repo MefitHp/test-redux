@@ -17,6 +17,8 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) =
             label="Author"
             value={course.authorId}
             onChange={onChange}
+            defaultOption="Select author"
+            options={allAuthors}
             error={errors.authorId} />
 
         <TextInput
@@ -40,3 +42,5 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) =
             onClick={onSave} />
     </form>
 )
+
+export default CourseForm

@@ -9,7 +9,7 @@ class CoursesPage extends Component {
     render() {
         const { courses } = this.props;
         return (
-            <div className="container">
+            <div>
                 <h1>Cursos: </h1>
                 <CourseList courses={courses} />
             </div>

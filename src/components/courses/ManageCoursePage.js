@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import * as courseActions from '../../redux/actions/courseActions'
 
 class ManageCoursePage extends Component {
     render() {
         return (
-            <div></div>
+            <div>
+                <h1>Administrador de cursos: </h1>
+            </div>
         )
     }
 }
@@ -18,7 +21,7 @@ function mapStateToProps(state, OwnProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(courseActions, dispatch)
     }
 
 }

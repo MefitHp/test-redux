@@ -6,7 +6,7 @@ import { Navbar } from './components/common/Navbar'
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <Navbar />
         <Routes />
       </div>

@@ -1,16 +1,16 @@
 import React from 'react'
 import CourseListRow from './CourseListRow'
 
-const courseList = ({ courses, deleteCourse }) => {
+const CourseList = ({ courses }) => {
     return (
         <table className="table">
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Category</th>
-                    <th>Length</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Categoría</th>
+                    <th>Duración</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,4 +22,4 @@ const courseList = ({ courses, deleteCourse }) => {
     )
 }
 
-export default courseList;
+export default CourseList;

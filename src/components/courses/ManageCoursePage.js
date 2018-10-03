@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as courseActions from '../../redux/actions/courseActions'
 
-export class ManageCoursePage extends Component {
+class ManageCoursePage extends Component {
     render() {
-        return <div></div>
+        return (
+            <div></div>
+        )
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state, OwnProps) {
     return {
         state: state
     }
@@ -17,8 +18,9 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(courseActions, dispatch)
+        actions: bindActionCreators(actions, dispatch)
     }
+
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage)
+export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);

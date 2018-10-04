@@ -7,10 +7,12 @@ import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker'
 import configureStore from './store/configureStore'
 import { loadCourses } from './redux/actions/courseActions'
+import { loadAuthors } from './redux/actions/authorActions'
 
 
 const store = configureStore();
 store.dispatch(loadCourses());
+store.dispatch(loadAuthors());
 
 const WithRoute = () => (
 	<Router>

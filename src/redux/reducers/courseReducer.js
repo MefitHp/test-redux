@@ -1,7 +1,8 @@
 import * as types from '../actions/actionTypes'
+import initialState from './initialState'
 //El reducer es sólo una función que recibe el current state y una acción y devuelve un nuevo state.
 //state = [] inicializa el state como un lista.
-export default function courseReducer(state = [], action) {
+export default function courseReducer(state = initialState.courses, action) {
     switch (action.type) {
         case types.LOAD_COURSES_SUCCESS:
             // return [...state, Object.assign({}, action.course) ];

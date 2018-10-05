@@ -6,6 +6,14 @@ export function loadCoursesSuccess(courses) {
     return { type: types.LOAD_COURSES_SUCCESS, courses }
 }
 
+export function createCourseSuccess(course) {
+    return { type: types.CREATE_CURSE_SUCCESS, course }
+}
+
+export function updateCourseSuccess(course) {
+    return { type: types.UPDATE_COURSE_SUCCESS, course }
+}
+
 //Un thunk siempre regresa una función que acepta un dispatch 
 export function loadCourses() {
     return function (dispatch) {
@@ -15,4 +23,18 @@ export function loadCourses() {
             throw (error);
         });
     }
+}
+
+export function saveCourse(course) {
+    return function (dispatch) {
+        return courseApi.saveCourse().then(savedCourse => {
+            course.id ? dispatch(updateCourseSuccess(savedCourse)) :
+                dispatch(createCourseSuccess(savedCourse))
+        }).catch(
+            error => {
+                throw (error);
+            }
+        )
+    }
+
 }

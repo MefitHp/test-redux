@@ -6,7 +6,7 @@ import CourseForm from './CourseForm'
 
 class ManageCoursePage extends Component {
     state = {
-        course: Object.assign({}, this.props.initialCourse),
+        course: Object.assign({}, this.props.course),
         errors: {}
     }
 
@@ -16,6 +16,13 @@ class ManageCoursePage extends Component {
         course[fieldName] = e.target.value;
         this.setState({ course: course });
     }
+
+    saveCourse = (e) => {
+        e.preventDefault();
+        let course = this.state.course
+        this.props.actions.saveCourse(course);
+        this.props.history.push('/courses')
+    }
     render() {
         return (
             <div>
@@ -24,14 +31,26 @@ class ManageCoursePage extends Component {
                     allAuthors={this.props.authors}
                     course={this.state.course}
                     errors={this.state.errors}
+                    onSave={this.saveCourse}
                 />
             </div>
         )
     }
 }
 
-function mapStateToProps(state, OwnProps) {
-    const course = { id: '', watchHref: '', title: '', authorId: '', length: '', category: '' };
+function getCourseById(courses, id) {
+    const course = courses.filter(course => course.id === id);
+    if (course) return course[0];
+    return null;
+}
+
+function mapStateToProps(state, ownProps) {
+    const courseId = ownProps.match.params.id;
+    console.log(courseId)
+    let course = { id: '', watchHref: '', title: '', authorId: '', length: '', category: '' };
+    if (courseId) {
+        course = getCourseById(state.courses, courseId);
+    }
 
     const authorsFormattedForDropdown = state.authors.map(author => {
         return {
@@ -41,7 +60,7 @@ function mapStateToProps(state, OwnProps) {
     })
 
     return {
-        initialCourse: course,
+        course: course,
         authors: authorsFormattedForDropdown,
     }
 }

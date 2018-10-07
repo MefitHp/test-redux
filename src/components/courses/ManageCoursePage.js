@@ -10,6 +10,13 @@ class ManageCoursePage extends Component {
         errors: {}
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props !== nextProps.course.id) {
+            this.setState({ course: Object.assign({}, nextProps.course) })
+        }
+    }
+
+
     updateCourseState = (e) => {
         const fieldName = e.target.name;
         let course = this.state.course;
@@ -46,7 +53,6 @@ function getCourseById(courses, id) {
 
 function mapStateToProps(state, ownProps) {
     const courseId = ownProps.match.params.id;
-    console.log(courseId)
     let course = { id: '', watchHref: '', title: '', authorId: '', length: '', category: '' };
     if (courseId) {
         course = getCourseById(state.courses, courseId);
